@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { EventListItem, Events } from "../types";
 import { getEventsList } from "../api/events";
 
-export default function useEvents() {
+export default function useEventsList() {
   const [eventslist, setEventslist] = useState<EventListItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

@@ -8,7 +8,7 @@ export interface EventListItem {
   venue_id?: number;
 }
 
-export interface Event {
+export interface SingleEvent {
   id: number;
   title: string;
   description: string;
