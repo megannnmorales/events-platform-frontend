@@ -3,23 +3,23 @@ import EventsText from "./EventsText";
 interface EventsCardProps {
   title: string;
   description: string;
-  start_time: string;
-  end_time?: string;
+  starts_at: string;
+  ends_at: string;
 }
 
 export default function EventsCard({
   title,
   description,
-  start_time,
-  end_time,
+  starts_at,
+  ends_at,
 }: EventsCardProps) {
   return (
     <li>
       <EventsText
         title={title}
         description={description}
-        start_time={start_time}
-        end_time={end_time}
+        starts_at={starts_at}
+        ends_at={ends_at}
       />
     </li>
   );

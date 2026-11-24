@@ -1,13 +1,25 @@
 import EventsCard from "./EventsCard";
+import type { EventListItem } from "../types";
 
-interface EventListProps{
-    event: []
+interface EventListProps {
+  events: EventListItem[];
 }
 
-export default function EventsList({ event }: EventListProps) {
+export default function EventsList({ events }: EventListProps) {
   return (
     <ul>
-        {event.map((event) =>  (<EventsCard title={event.title} description={event.description} start_time={event.start_time} end_time={event.end_time{/>)}
-        </ul>
+      {events.length > 0 ? (
+        events.map((event) => (
+          <EventsCard
+            title={event.title}
+            description={event.description}
+            starts_at={event.starts_at}
+            ends_at={event.ends_at}
+          />
+        ))
+      ) : (
+        <li className="empty-state">There are no events at this time.</li>
+      )}
+    </ul>
   );
 }
