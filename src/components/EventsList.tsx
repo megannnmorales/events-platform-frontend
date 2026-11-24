@@ -11,6 +11,7 @@ export default function EventsList({ events }: EventListProps) {
       {events.length > 0 ? (
         events.map((event) => (
           <EventsCard
+            key={event.id}
             title={event.title}
             description={event.description}
             starts_at={event.starts_at}
