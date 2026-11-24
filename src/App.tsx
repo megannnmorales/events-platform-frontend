@@ -1,11 +1,9 @@
-import EventsListPage from "./pages/EventsListPage";
-import Homepage from "./pages/HomePage";
+import { AppRoutes } from "./AppRoutes";
 
 export default function App() {
   return (
     <>
-      <Homepage />
-      <EventsListPage />
+      <AppRoutes />
     </>
   );
 }

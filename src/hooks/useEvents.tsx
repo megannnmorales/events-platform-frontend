@@ -14,21 +14,19 @@ export default function useEvents() {
       setError(null);
 
       try {
-        const response = await getEventsList({ signal: controller.signal });
-        if (!response.ok) {
-          throw new Error(`Could not load events (${response.status})`);
-        }
-
-        const data: Events = await response.json();
-
-        setEventslist(data.events);
+        const response: Events = await getEventsList(controller.signal);
+        setEventslist(response.events);
       } catch (err) {
+        if (err instanceof Error && err.name === "AbortError") return;
         setError(err instanceof Error ? err.message : "Something went wrong");
       } finally {
         setIsLoading(false);
       }
     };
     loadEvents();
+    return () => {
+      controller.abort();
+    };
   }, []);
-  return { eventslist };
+  return { eventslist, isLoading, error };
 }
