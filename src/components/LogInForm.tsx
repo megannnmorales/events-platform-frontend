@@ -27,7 +27,7 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={(event) => handleSubmit(event)}>
-      <p>Log in</p>
+      <h2>Log in</h2>
       <label htmlFor="email">
         Email
         <input
@@ -41,6 +41,7 @@ export default function LoginForm() {
         <input
           id="password"
           name="password"
+          type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
