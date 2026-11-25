@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import EventPage from "./pages/EventPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Layout } from "./components/Layout";
+import UserEventsListPage from "./pages/UserEventsListPage";
 
 export function AppRoutes() {
   return (
@@ -12,6 +13,7 @@ export function AppRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsListPage />} />
         <Route path="/events/:id" element={<EventPage />} />
+        <Route path="/myevents" element={<UserEventsListPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

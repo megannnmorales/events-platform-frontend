@@ -17,9 +17,6 @@ export const getEvent = (
 //   code: "full" | "duplicate" | "unreadable" | "unavailable";
 //   constructor(message: string, code: TeamError["code"]) { /* ... */ }
 // }
-export const getUserEventsList = (
-  id: string,
-  signal?: AbortSignal,
-): Promise<Events> => {
-  return apiGet<Events>(`/api/events/${id}/rsvp`, signal);
+export const getUserEventsList = (signal?: AbortSignal): Promise<Events> => {
+  return apiGet<Events>(`/api/user/me/events`, signal);
 };

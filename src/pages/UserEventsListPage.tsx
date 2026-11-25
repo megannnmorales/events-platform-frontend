@@ -1,9 +1,9 @@
-import Events from "../components/Events";
+import UserEvents from "../components/UserEvents";
 
-export default function UserEventPage() {
+export default function UserEventsListPage() {
   return (
     <>
-      <Events />
+      <UserEvents />
     </>
   );
 }

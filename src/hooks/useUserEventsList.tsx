@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import type { EventListItem, Events } from "../types";
-import { getEventsList } from "../api/events";
+import { getUserEventsList } from "../api/events";
 
 export default function useEventsList() {
-  const [eventslist, setEventslist] = useState<EventListItem[]>([]);
+  const [userEventsList, setUserEventsList] = useState<EventListItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -14,8 +14,8 @@ export default function useEventsList() {
       setError(null);
 
       try {
-        const response: Events = await getEventsList(controller.signal);
-        setEventslist(response.events);
+        const response: Events = await getUserEventsList(controller.signal);
+        setUserEventsList(response.events);
       } catch (err) {
         if (err instanceof Error && err.name === "AbortError") return;
         setError(err instanceof Error ? err.message : "Something went wrong");
@@ -24,9 +24,11 @@ export default function useEventsList() {
       }
     };
     loadEvents();
+    console.log(userEventsList);
     return () => {
       controller.abort();
     };
   }, []);
-  return { eventslist, isLoading, error };
+
+  return { userEventsList, isLoading, error };
 }
