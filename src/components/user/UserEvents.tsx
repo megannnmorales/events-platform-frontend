@@ -1,5 +1,5 @@
-import useUserEventsList from "../hooks/useEventsList";
-import EventsList from "./EventsList";
+import useUserEventsList from "../../hooks/useEventsList";
+import UserEventsList from "./UserEventsList";
 
 export default function UserEvents() {
   const { eventslist, isLoading, error } = useUserEventsList();
@@ -16,7 +16,7 @@ export default function UserEvents() {
   }
   return (
     <>
-      <EventsList events={eventslist} />
+      <UserEventsList events={eventslist} />
     </>
   );
 }

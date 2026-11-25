@@ -1,16 +1,16 @@
-import EventsCard from "./EventsCard";
-import type { EventListItem } from "../types";
+import UserEventsCard from "./UserEventsCard";
+import type { EventListItem } from "../../types";
 
-interface EventListProps {
+interface UserEventsListProps {
   events: EventListItem[];
 }
 
-export default function EventsList({ events }: EventListProps) {
+export default function EventsList({ events }: UserEventsListProps) {
   return (
     <ul>
       {events.length > 0 ? (
         events.map((event) => (
-          <EventsCard
+          <UserEventsCard
             key={event.id}
             title={event.title}
             description={event.description}

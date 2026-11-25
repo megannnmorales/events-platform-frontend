@@ -22,6 +22,18 @@ export interface Events {
   events: EventListItem[];
 }
 
+export interface UserEventsListItem {
+  id: number;
+  title: string;
+  starts_at: string;
+  rsvp_date: string;
+  event_rank: number;
+  total_rsvps: number;
+}
+
+export interface UserEvents {
+  events: UserEventsListItem;
+}
 // address: "Discovery Way, Leeds, LS2 3AA";
 // capacity: 200;
 // created_at: "2026-11-23T15:26:04.151745+00:00";

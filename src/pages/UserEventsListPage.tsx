@@ -1,4 +1,4 @@
-import UserEvents from "../components/UserEvents";
+import UserEvents from "../components/user/UserEvents";
 
 export default function UserEventsListPage() {
   return (

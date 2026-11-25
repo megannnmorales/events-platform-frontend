@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import type { EventListItem, Events } from "../types";
+import type { EventListItem, Events, UserEventsListItem } from "../types";
 import { getUserEventsList } from "../api/events";
 
 export default function useEventsList() {
-  const [userEventsList, setUserEventsList] = useState<EventListItem[]>([]);
+  const [userEventsList, setUserEventsList] = useState<UserEventsListItem[]>(
+    [],
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
