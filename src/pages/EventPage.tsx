@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import NotFoundPage from "./NotFoundPage";
 import useEvent from "../hooks/useEvent";
-import EventOne from "../components/EventOne";
+import EventOne from "../../src/components/events/EventOne";
 
 export default function EventPage() {
   const { id = "" } = useParams();

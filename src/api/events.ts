@@ -1,5 +1,5 @@
 import type { EventResponse } from "../hooks/useEvent";
-import type { Events } from "../types";
+import type { Events, UserEvents } from "../types";
 import { apiGet } from "./clients";
 
 export const getEventsList = (signal?: AbortSignal): Promise<Events> => {
@@ -17,6 +17,8 @@ export const getEvent = (
 //   code: "full" | "duplicate" | "unreadable" | "unavailable";
 //   constructor(message: string, code: TeamError["code"]) { /* ... */ }
 // }
-export const getUserEventsList = (signal?: AbortSignal): Promise<Events> => {
-  return apiGet<Events>(`/api/user/me/events`, signal);
+export const getUserEventsList = (
+  signal?: AbortSignal,
+): Promise<UserEvents> => {
+  return apiGet<UserEvents>(`/api/user/me/events`, signal);
 };

@@ -125,6 +125,10 @@ nav ul {
   gap: 1.5rem;
 }
 
+li {
+  list-style: none;
+}
+
 nav a {
   color: var(--accent);
   text-decoration: none;

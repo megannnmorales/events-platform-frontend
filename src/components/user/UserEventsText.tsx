@@ -1,23 +1,27 @@
 interface EventsTextProps {
   title: string;
-  description: string;
   starts_at: string;
-  ends_at: string;
+  rsvp_date: string;
+  event_rank: number;
+  total_rsvps: number;
 }
 
 export default function EventsText({
   title,
-  description,
   starts_at,
-  ends_at,
+  rsvp_date,
+  event_rank,
+  total_rsvps,
 }: Readonly<EventsTextProps>) {
   return (
     <>
       <h3>{title}</h3>
-      <p>{description}</p>
       <p>
         {" "}
-        {starts_at} - {ends_at}
+        {starts_at}
+        {rsvp_date}
+        {event_rank}
+        {total_rsvps}
       </p>
     </>
   );

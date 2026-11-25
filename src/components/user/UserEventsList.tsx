@@ -1,8 +1,8 @@
 import UserEventsCard from "./UserEventsCard";
-import type { EventListItem } from "../../types";
+import type { UserEventsListItem } from "../../types";
 
 interface UserEventsListProps {
-  events: EventListItem[];
+  events: UserEventsListItem[];
 }
 
 export default function EventsList({ events }: UserEventsListProps) {
@@ -13,9 +13,10 @@ export default function EventsList({ events }: UserEventsListProps) {
           <UserEventsCard
             key={event.id}
             title={event.title}
-            description={event.description}
             starts_at={event.starts_at}
-            ends_at={event.ends_at}
+            rsvp_date={event.rsvp_date}
+            event_rank={event.event_rank}
+            total_rsvps={event.total_rsvps}
           />
         ))
       ) : (

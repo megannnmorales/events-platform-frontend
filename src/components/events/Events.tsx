@@ -1,4 +1,4 @@
-import useEventsList from "../hooks/useEventsList";
+import useEventsList from "../../hooks/useEventsList";
 import EventsList from "./EventsList";
 
 export default function Events() {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { EventListItem, Events, UserEventsListItem } from "../types";
+import type { UserEvents, UserEventsListItem } from "../types";
 import { getUserEventsList } from "../api/events";
 
 export default function useEventsList() {
@@ -11,12 +11,12 @@ export default function useEventsList() {
 
   useEffect(() => {
     const controller = new AbortController();
-    const loadEvents = async () => {
+    const loadUserEvents = async () => {
       setIsLoading(true);
       setError(null);
 
       try {
-        const response: Events = await getUserEventsList(controller.signal);
+        const response: UserEvents = await getUserEventsList(controller.signal);
         setUserEventsList(response.events);
       } catch (err) {
         if (err instanceof Error && err.name === "AbortError") return;
@@ -25,8 +25,7 @@ export default function useEventsList() {
         setIsLoading(false);
       }
     };
-    loadEvents();
-    console.log(userEventsList);
+    loadUserEvents();
     return () => {
       controller.abort();
     };

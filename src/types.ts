@@ -32,7 +32,7 @@ export interface UserEventsListItem {
 }
 
 export interface UserEvents {
-  events: UserEventsListItem;
+  events: UserEventsListItem[];
 }
 // address: "Discovery Way, Leeds, LS2 3AA";
 // capacity: 200;

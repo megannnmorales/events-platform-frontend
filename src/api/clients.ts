@@ -1,3 +1,5 @@
+import { readToken } from "../utils/getLocalStorage";
+
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export class ApiError extends Error {
@@ -13,7 +15,12 @@ export const apiGet = async <T>(
   path: string,
   signal?: AbortSignal,
 ): Promise<T> => {
-  const response = await fetch(`${BASE_URL}${path}`, { signal });
+  const token = readToken();
+
+  const response = await fetch(`${BASE_URL}${path}`, {
+    signal,
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
 
   if (!response.ok) {
     throw new ApiError(
