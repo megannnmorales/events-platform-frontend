@@ -49,5 +49,7 @@ export default function UserProvider({ children }: { children: ReactNode }) {
 
     setUser({ status: "success", user: currUser });
   }
-  return <UserContext value={login}>{children}</UserContext>;
+  return (
+    <UserContext value={{ userState: user, login }}>{children}</UserContext>
+  );
 }

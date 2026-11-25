@@ -1,9 +1,9 @@
-import Header from "../components/Header";
+import LoginForm from "../components/LogInForm";
 
 export default function Homepage() {
   return (
     <>
-      <Header />
+      <LoginForm />
     </>
   );
 }
