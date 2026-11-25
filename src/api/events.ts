@@ -1,5 +1,5 @@
 import type { EventResponse } from "../hooks/useEvent";
-import type { Events, SingleEvent } from "../types";
+import type { Events } from "../types";
 import { apiGet } from "./clients";
 
 export const getEventsList = (signal?: AbortSignal): Promise<Events> => {
