@@ -1,6 +1,6 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useMemo, useState, type ReactNode } from "react";
 import { decodeID } from "../utils/decodeID";
-import { writeToken } from "../utils/getLocalStorage";
+import { readToken, writeToken } from "../utils/getLocalStorage";
 
 export interface User {
   id: string;
@@ -22,7 +22,9 @@ export interface UserContextValue {
 export const UserContext = createContext<UserContextValue | null>(null);
 
 export default function UserProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<UserState>({ status: "loading" });
+  const [user, setUser] = useState<UserState>(
+    readToken() ? { status: "loading" } : { status: "anonymous" },
+  );
 
   async function login(email: string, password: string) {
     const response = await fetch(`${import.meta.env.VITE_AUTH_API_URL}/login`, {
@@ -49,7 +51,7 @@ export default function UserProvider({ children }: { children: ReactNode }) {
 
     setUser({ status: "success", user: currUser });
   }
-  return (
-    <UserContext value={{ userState: user, login }}>{children}</UserContext>
-  );
+
+  const value = useMemo(() => ({ userState: user, login }));
+  return <UserContext value={value}>{children}</UserContext>;
 }
