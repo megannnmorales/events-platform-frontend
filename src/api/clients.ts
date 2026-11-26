@@ -48,8 +48,17 @@ export const apiPost = async <T>(path: string, body: unknown): Promise<T> => {
   return (await response.json()) as T;
 };
 
-export const apiDelete = async (path: string): Promise<void> => {
-  const response = await fetch(`${BASE_URL}${path}`, { method: "DELETE" });
+export const apiDelete = async (
+  path: string,
+  signal?: AbortSignal,
+): Promise<void> => {
+  const token = readToken();
+
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: "DELETE",
+    signal,
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
 
   if (!response.ok) {
     throw new ApiError(

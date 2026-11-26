@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { UserEvents, UserEventsListItem } from "../types";
-import { getUserEventsList } from "../api/events";
+import { getUserEventsList } from "../api/user";
 
 export default function useEventsList() {
   const [userEventsList, setUserEventsList] = useState<UserEventsListItem[]>(
