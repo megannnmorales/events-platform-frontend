@@ -2,7 +2,11 @@ import useUserEventsList from "../../hooks/useUserEventsList";
 import UserEventsList from "./UserEventsList";
 
 export default function UserEvents() {
-  const { userEventsList, isLoading, error } = useUserEventsList();
+  const { userEventsList, isLoading, error, removeRsvp } = useUserEventsList();
+
+  const handleCancel = (id: number) => {
+    removeRsvp(id);
+  };
 
   if (isLoading) {
     return <p>Loading Events...</p>;
@@ -16,7 +20,7 @@ export default function UserEvents() {
   }
   return (
     <>
-      <UserEventsList events={userEventsList} />
+      <UserEventsList events={userEventsList} onCancel={handleCancel} />
     </>
   );
 }

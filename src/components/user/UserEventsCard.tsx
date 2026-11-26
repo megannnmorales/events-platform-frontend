@@ -1,19 +1,23 @@
 import UserEventsText from "./UserEventsText";
 
 interface UserEventsCardProps {
+  id: number;
   title: string;
   starts_at: string;
   rsvp_date: string;
   event_rank: number;
   total_rsvps: number;
+  onCancel: (id: number) => void;
 }
 
 export default function UserEventsCard({
+  id,
   title,
   starts_at,
   rsvp_date,
   event_rank,
   total_rsvps,
+  onCancel,
 }: UserEventsCardProps) {
   return (
     <li>
@@ -24,6 +28,7 @@ export default function UserEventsCard({
         event_rank={event_rank}
         total_rsvps={total_rsvps}
       />
+      <button onClick={() => onCancel(id)}>Cancel</button>
     </li>
   );
 }

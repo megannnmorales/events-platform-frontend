@@ -9,6 +9,10 @@ export default function useEventsList() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const removeRsvp = (id: number) => {
+    const updatedEvents = userEventsList.filter((event) => event.id !== id);
+    setUserEventsList(updatedEvents);
+  };
   useEffect(() => {
     const controller = new AbortController();
     const loadUserEvents = async () => {
@@ -31,5 +35,5 @@ export default function useEventsList() {
     };
   }, []);
 
-  return { userEventsList, isLoading, error };
+  return { userEventsList, isLoading, error, removeRsvp };
 }
