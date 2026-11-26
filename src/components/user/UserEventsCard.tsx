@@ -28,7 +28,7 @@ export default function UserEventsCard({
         event_rank={event_rank}
         total_rsvps={total_rsvps}
       />
-      <button onClick={() => onCancel(id)}>Cancel</button>
+      <button onClick={() => onCancel(id)}>No longer want to attend</button>
     </li>
   );
 }

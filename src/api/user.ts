@@ -7,6 +7,6 @@ export const getUserEventsList = (
   return apiGet<UserEvents>(`/api/user/me/events`, signal);
 };
 
-export const cancelRsvp = (id: number, signal?: AbortSignal): Promise<void> => {
-  return apiDelete(`/api/events/${id}/rsvp/me`, signal);
+export const cancelRsvp = (id: number): Promise<void> => {
+  return apiDelete(`/api/events/${id}/rsvp/me`);
 };
