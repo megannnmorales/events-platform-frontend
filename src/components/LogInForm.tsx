@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useUser } from "../hooks/useUser";
+import useUser from "../hooks/useUser";
 import type { SubmitEvent } from "react";
 
 export default function LoginForm() {

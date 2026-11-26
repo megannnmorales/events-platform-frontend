@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { useUser } from "../hooks/useUser";
+import useUser from "../hooks/useUser";
 
 export default function NavBar() {
   const { userState } = useUser();
@@ -30,7 +30,7 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li>
-          {userState && (
+          {userState.status !== "anonymous" && (
             <NavLink
               to="/myevents"
               className={({ isActive }) =>
