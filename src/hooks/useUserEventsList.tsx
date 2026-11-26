@@ -42,8 +42,7 @@ export default function useEventsList() {
 
     try {
       await cancelRsvp(id);
-      const updatedEvents = userEventsList.filter((event) => event.id !== id);
-      setUserEventsList(updatedEvents);
+      setUserEventsList(userEventsList.filter((event) => event.id !== id));
     } catch (err) {
       setDeleteError(
         err instanceof Error ? err.message : "Something went wrong",

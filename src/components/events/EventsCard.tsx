@@ -7,6 +7,7 @@ interface EventsCardProps {
   description: string;
   starts_at: string;
   ends_at: string;
+  onRsvp: () => void;
 }
 
 export default function EventsCard({
@@ -25,6 +26,7 @@ export default function EventsCard({
         starts_at={starts_at}
         ends_at={ends_at}
       />
+      {id ? null : <button onClick={() => navigate(-1)}>Go Back</button>}
       {id ? null : <button onClick={() => navigate(-1)}>Go Back</button>}
     </li>
   );

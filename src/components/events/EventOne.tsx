@@ -6,6 +6,7 @@ interface EventProps {
   description: string;
   starts_at: string;
   ends_at: string;
+  onRsvp: () => void;
 }
 
 export default function Event({
@@ -14,16 +15,16 @@ export default function Event({
   description,
   starts_at,
   ends_at,
+  onRsvp,
 }: EventProps) {
   return (
-    <>
-      <EventsCard
-        id={id}
-        title={title}
-        description={description}
-        starts_at={starts_at}
-        ends_at={ends_at}
-      />
-    </>
+    <EventsCard
+      id={id}
+      title={title}
+      description={description}
+      starts_at={starts_at}
+      ends_at={ends_at}
+      onRsvp={onRsvp}
+    />
   );
 }

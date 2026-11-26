@@ -2,10 +2,12 @@ import { useParams } from "react-router";
 import NotFoundPage from "./NotFoundPage";
 import useEvent from "../hooks/useEvent";
 import EventOne from "../../src/components/events/EventOne";
+import useUserEventsList from "../hooks/useUserEventsList";
 
 export default function EventPage() {
   const { id = "" } = useParams();
   const { event, isLoading, error } = useEvent(id);
+  const { rsvpToEvent, addError } = useUserEventsList();
 
   if (!id || Number(id) <= 0) {
     return <NotFoundPage />;
@@ -20,13 +22,22 @@ export default function EventPage() {
     return <p>Loading Event...</p>;
   }
 
+  if (addError !== null) {
+    return <p>Oh no! An error! : {error}</p>;
+  }
+  const handleRsvp = () => {
+    rsvpToEvent(event.id);
+  };
+
   return (
     <>
       <EventOne
+        id={event.id}
         title={event.title}
         description={event.description}
         starts_at={event.starts_at}
         ends_at={event.ends_at}
+        onRsvp={handleRsvp}
       />
     </>
   );
