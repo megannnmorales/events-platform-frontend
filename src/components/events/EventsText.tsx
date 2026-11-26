@@ -1,3 +1,4 @@
+import { formatDateTime } from "../../utils/formatDate";
 interface EventsTextProps {
   title: string;
   description: string;
@@ -11,13 +12,15 @@ export default function EventsText({
   starts_at,
   ends_at,
 }: Readonly<EventsTextProps>) {
+  const start_time = formatDateTime(starts_at);
+  const end_time = formatDateTime(ends_at);
   return (
     <>
       <h3>{title}</h3>
       <p>{description}</p>
       <p>
         {" "}
-        {starts_at} - {ends_at}
+        {start_time} - {end_time}
       </p>
     </>
   );
