@@ -3,8 +3,8 @@ export function formatDateTime(iso: string): string {
     weekday: "short",
     day: "numeric",
     month: "short",
-    year: "numeric",
     hour: "2-digit",
     minute: "2-digit",
+    year: "numeric",
   });
 }

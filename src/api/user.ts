@@ -1,5 +1,5 @@
-import type { UserEvents } from "../types";
-import { apiDelete, apiGet } from "./clients";
+import type { RsvpResponse, UserEvents } from "../types";
+import { apiDelete, apiGet, apiPost } from "./clients";
 
 export const getUserEventsList = (
   signal?: AbortSignal,
@@ -9,4 +9,11 @@ export const getUserEventsList = (
 
 export const cancelRsvp = (id: number): Promise<void> => {
   return apiDelete(`/api/events/${id}/rsvp/me`);
+};
+
+export const addRsvp = (
+  id: number,
+  signal?: AbortSignal,
+): Promise<RsvpResponse> => {
+  return apiPost<RsvpResponse>(`/api/events/${id}/rsvp`, signal);
 };

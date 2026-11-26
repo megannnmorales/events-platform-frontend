@@ -31,11 +31,16 @@ export const apiGet = async <T>(
   return (await response.json()) as T;
 };
 
-export const apiPost = async <T>(path: string, body: unknown): Promise<T> => {
+export const apiPost = async <T>(path: string, body?: unknown): Promise<T> => {
+  const token = readToken();
+
   const response = await fetch(`${BASE_URL}${path}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: body !== undefined ? JSON.stringify(body) : undefined,
   });
 
   if (!response.ok) {
@@ -48,15 +53,11 @@ export const apiPost = async <T>(path: string, body: unknown): Promise<T> => {
   return (await response.json()) as T;
 };
 
-export const apiDelete = async (
-  path: string,
-  signal?: AbortSignal,
-): Promise<void> => {
+export const apiDelete = async (path: string): Promise<void> => {
   const token = readToken();
 
   const response = await fetch(`${BASE_URL}${path}`, {
     method: "DELETE",
-    signal,
     headers: token ? { Authorization: `Bearer ${token}` } : {},
   });
 

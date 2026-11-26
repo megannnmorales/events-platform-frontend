@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import UserEventsText from "./UserEventsText";
 
 interface UserEventsCardProps {
@@ -19,8 +20,9 @@ export default function UserEventsCard({
   total_rsvps,
   onCancel,
 }: UserEventsCardProps) {
+  let navigate = useNavigate();
   return (
-    <li>
+    <li onClick={() => navigate(`/events/${id}`)}>
       <UserEventsText
         title={title}
         starts_at={starts_at}

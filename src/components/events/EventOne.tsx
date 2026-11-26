@@ -1,6 +1,7 @@
 import EventsCard from "./EventsCard";
 
 interface EventProps {
+  id: number;
   title: string;
   description: string;
   starts_at: string;
@@ -8,6 +9,7 @@ interface EventProps {
 }
 
 export default function Event({
+  id,
   title,
   description,
   starts_at,
@@ -16,6 +18,7 @@ export default function Event({
   return (
     <>
       <EventsCard
+        id={id}
         title={title}
         description={description}
         starts_at={starts_at}
