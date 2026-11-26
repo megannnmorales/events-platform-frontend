@@ -12,6 +12,7 @@ export default function EventsList({ events }: EventsListProps) {
         events.map((event) => (
           <EventsCard
             key={event.id}
+            id={event.id}
             title={event.title}
             description={event.description}
             starts_at={event.starts_at}

@@ -1,32 +1,70 @@
-# React + TypeScript + Vite
+# Events Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React and TypeScript front end for an events API. Users can browse events, view details, log in, RSVP, and cancel RSVPs. Logged-in users can also see the events they've RSVPed to.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Browse all events and open a single event
+- Log in and log out with a token-based session
+- RSVP to an event and cancel an RSVP
+- View your own RSVPed events
+- Protected routes that redirect logged-out users to login
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- React Router
+- Vitest
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Prerequisites
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- Node.js `<version>` or later
+- A running instance of the events API
+
+### Installation
+
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Environment
+
+Create a `.env` file in the project root with your API base URL:
+
+```
+VITE_API_BASE_URL=<your-api-url>
+```
+
+### Running the app
+
+```bash
+npm run dev
+```
+
+Open the local URL Vite prints, usually `http://localhost:5173`.
+
+## Project Structure
+
+- `src/api/`: API request helpers and endpoint functions
+- `src/hooks/`: custom hooks that fetch data and manage loading and error state
+- `src/components/`: reusable UI, grouped by feature (`events`, `user`)
+- `src/pages/`: route-level pages
+- `src/contexts/`: shared login state
+- `src/utils/`: small helper functions
+- `src/types.ts`: shared TypeScript types
+
+## Design Notes
+
+- A shared `apiGet` helper handles the base URL, auth header, and error checks in one place.
+- Custom hooks own data fetching, so components only decide what to render.
+- Login state lives in context, so the navbar and protected pages share one value.
+
+## Testing
+
+```bash
+npm test
+```

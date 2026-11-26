@@ -3,8 +3,6 @@ import useUser from "../hooks/useUser";
 
 export default function NavBar() {
   const { userState } = useUser();
-
-  console.log(userState);
   return (
     <nav>
       <ul>
