@@ -8,3 +8,7 @@ export function formatDateTime(iso: string): string {
     year: "numeric",
   });
 }
+
+export function toIsoString(local: string): string {
+  return new Date(local).toISOString();
+}

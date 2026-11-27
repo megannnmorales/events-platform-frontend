@@ -1,3 +1,4 @@
+import CreateEventForm from "../components/user/CreateEventForm";
 import UserEvents from "../components/user/UserEvents";
 import useUser from "../hooks/useUser";
 import { Navigate } from "react-router";
@@ -10,6 +11,7 @@ export default function UserEventsListPage() {
   }
   return (
     <>
+      <CreateEventForm />
       <UserEvents />
     </>
   );

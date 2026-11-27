@@ -79,7 +79,7 @@ export default function UserProvider({ children }: { children: ReactNode }) {
     const id = payload.sub;
 
     if (id === undefined) {
-      throw Error("no registered email/password found");
+      throw new Error("no registered email/password found");
     }
     const currUser = { id: id };
     writeToken(access_token);
