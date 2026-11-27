@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useCreateEvent from "../../hooks/useCreateEvent";
 import { toIsoString } from "../../utils/formatDate";
+import type { SubmitEvent } from "react";
 
 export default function CreateEventForm() {
   const [title, setTitle] = useState("");
@@ -19,10 +20,14 @@ export default function CreateEventForm() {
       ends_at: toIsoString(endTime),
       venue_id: 1,
     });
+    setTitle("");
+    setDescription("");
+    setStartTime("");
+    setEndTime("");
   };
 
   if (isSubmitting) {
-    return <p>Loading Events...</p>;
+    return <p>Creating Event...</p>;
   }
   if (error !== null) {
     return (

@@ -60,3 +60,5 @@ export interface CreateEventInput {
   ends_at: string;
   venue_id: number;
 }
+
+export type EventFilter = "available" | "organised";

@@ -20,6 +20,7 @@ export default function UserEvents() {
   }
   return (
     <>
+      <h2> My Events</h2>
       <UserEventsList events={userEventsList} onCancel={handleCancel} />
     </>
   );

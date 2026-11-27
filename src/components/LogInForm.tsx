@@ -26,7 +26,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={(event) => handleSubmit(event)}>
+    <form onSubmit={handleSubmit}>
       <h2>Log in</h2>
       <label htmlFor="email">
         Email
