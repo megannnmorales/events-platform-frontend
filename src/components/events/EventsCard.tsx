@@ -7,7 +7,8 @@ interface EventsCardProps {
   description: string;
   starts_at: string;
   ends_at: string;
-  onRsvp: () => void;
+  onRsvp?: () => void;
+  isAttending: boolean;
 }
 
 export default function EventsCard({
@@ -16,8 +17,11 @@ export default function EventsCard({
   starts_at,
   ends_at,
   id,
+  onRsvp,
+  isAttending,
 }: EventsCardProps) {
   let navigate = useNavigate();
+
   return (
     <li onClick={() => navigate(`/events/${id}`)}>
       <EventsText
@@ -26,7 +30,9 @@ export default function EventsCard({
         starts_at={starts_at}
         ends_at={ends_at}
       />
-      {id ? null : <button onClick={() => navigate(-1)}>Go Back</button>}
+      {!isAttending ? null : (
+        <button onClick={() => onRsvp}>I want to attend</button>
+      )}
       {id ? null : <button onClick={() => navigate(-1)}>Go Back</button>}
     </li>
   );

@@ -7,6 +7,7 @@ interface EventProps {
   starts_at: string;
   ends_at: string;
   onRsvp: () => void;
+  isAttending: boolean;
 }
 
 export default function Event({
@@ -16,6 +17,7 @@ export default function Event({
   starts_at,
   ends_at,
   onRsvp,
+  isAttending,
 }: EventProps) {
   return (
     <EventsCard
@@ -25,6 +27,7 @@ export default function Event({
       starts_at={starts_at}
       ends_at={ends_at}
       onRsvp={onRsvp}
+      isAttending={isAttending}
     />
   );
 }

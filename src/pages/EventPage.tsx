@@ -3,11 +3,13 @@ import NotFoundPage from "./NotFoundPage";
 import useEvent from "../hooks/useEvent";
 import EventOne from "../../src/components/events/EventOne";
 import useUserEventsList from "../hooks/useUserEventsList";
+import useUser from "../hooks/useUser";
 
 export default function EventPage() {
   const { id = "" } = useParams();
   const { event, isLoading, error } = useEvent(id);
-  const { rsvpToEvent, addError } = useUserEventsList();
+  const { userEventsList, rsvpToEvent, addError } = useUserEventsList();
+  const { userState } = useUser;
 
   if (!id || Number(id) <= 0) {
     return <NotFoundPage />;
@@ -29,6 +31,8 @@ export default function EventPage() {
     rsvpToEvent(event.id);
   };
 
+  const isAttending = userEventsList.filter((event) => event.id === Number(id));
+
   return (
     <>
       <EventOne
@@ -38,6 +42,7 @@ export default function EventPage() {
         starts_at={event.starts_at}
         ends_at={event.ends_at}
         onRsvp={handleRsvp}
+        isAttending={isAttending}
       />
     </>
   );
