@@ -9,7 +9,7 @@ export default function EventPage() {
   const { id = "" } = useParams();
   const { event, isLoading, error } = useEvent(id);
   const { userEventsList, rsvpToEvent, addError } = useUserEventsList();
-  const { userState } = useUser;
+  const { userState } = useUser();
 
   if (!id || Number(id) <= 0) {
     return <NotFoundPage />;
@@ -31,8 +31,9 @@ export default function EventPage() {
     rsvpToEvent(event.id);
   };
 
-  const isAttending = userEventsList.filter((event) => event.id === Number(id));
-
+  const isLoggedIn = userState.status === "success";
+  const isAttending = userEventsList.some((event) => event.id === Number(id));
+  console.log(isAttending, isLoggedIn);
   return (
     <>
       <EventOne
@@ -43,6 +44,7 @@ export default function EventPage() {
         ends_at={event.ends_at}
         onRsvp={handleRsvp}
         isAttending={isAttending}
+        isLoggedIn={isLoggedIn}
       />
     </>
   );

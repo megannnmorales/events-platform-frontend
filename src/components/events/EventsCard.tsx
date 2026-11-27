@@ -9,6 +9,7 @@ interface EventsCardProps {
   ends_at: string;
   onRsvp?: () => void;
   isAttending: boolean;
+  isLoggedIn: boolean;
 }
 
 export default function EventsCard({
@@ -19,8 +20,9 @@ export default function EventsCard({
   id,
   onRsvp,
   isAttending,
+  isLoggedIn,
 }: EventsCardProps) {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <li onClick={() => navigate(`/events/${id}`)}>
@@ -30,10 +32,27 @@ export default function EventsCard({
         starts_at={starts_at}
         ends_at={ends_at}
       />
-      {!isAttending ? null : (
-        <button onClick={() => onRsvp}>I want to attend</button>
+      {!isLoggedIn ? (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate("/");
+          }}
+        >
+          Log in to RSVP
+        </button>
+      ) : isAttending ? (
+        <span>I am attending</span>
+      ) : (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onRsvp?.();
+          }}
+        >
+          I want to attend
+        </button>
       )}
-      {id ? null : <button onClick={() => navigate(-1)}>Go Back</button>}
     </li>
   );
 }

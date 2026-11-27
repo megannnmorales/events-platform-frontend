@@ -6,7 +6,7 @@ export default function UserEventsListPage() {
   const { userState } = useUser();
 
   if (userState.status === "anonymous") {
-    return <Navigate to="/home" />;
+    return <Navigate to="/" />;
   }
   return (
     <>
