@@ -7,8 +7,15 @@ A React and TypeScript front end for an events API. Users can browse events, vie
 - Browse all events and open a single event
 - Log in and log out with a token-based session
 - RSVP to an event and cancel an RSVP
-- View your own RSVPed events
+- View your own RSVPed events and single event (different view - tbc as stats not showing correctly)
 - Protected routes that redirect logged-out users to login
+
+## Features to be added
+
+- Log out with a token-based session
+- Attendee list to organisers events
+- Organiser stack page
+- Accessibility labels
 
 ## Tech Stack
 
@@ -36,7 +43,7 @@ npm install
 Create a `.env` file in the project root with your API base URL:
 
 ```
-VITE_API_BASE_URL=<your-api-url>
+VITE_API_BASE_URL=http://127.0.0.1:8000
 ```
 
 ### Running the app
@@ -62,8 +69,9 @@ Open the local URL Vite prints, usually `http://localhost:5173`.
 - A shared `apiGet` helper handles the base URL, auth header, and error checks in one place.
 - Custom hooks own data fetching, so components only decide what to render.
 - Login state lives in context, so the navbar and protected pages share one value.
+- Rendered create event on myevents page for ease - can be separated in future
 
-## Testing
+## Testing (TESTS TO BE ADDED)
 
 ```bash
 npm test

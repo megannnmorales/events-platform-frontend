@@ -21,9 +21,7 @@ export default function EventsText({
       <h3>{title}</h3>
       <p>
         {" "}
-        {start_time}
-        {""}
-        {rsvpDate}
+        {start_time} {rsvpDate}
         {event_rank}
         {total_rsvps}
       </p>

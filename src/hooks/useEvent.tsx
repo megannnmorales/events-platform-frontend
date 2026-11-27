@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 import type { SingleEvent } from "../types";
 import { getEvent } from "../api/events";
 
-export interface EventResponse {
-  event: SingleEvent;
-}
-
 export default function useEvent(id: string) {
   const [event, setEvent] = useState<SingleEvent>();
   const [isLoading, setIsLoading] = useState(true);
