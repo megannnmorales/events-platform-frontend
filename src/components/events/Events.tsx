@@ -14,6 +14,7 @@ export default function Events() {
       </>
     );
   }
+
   return (
     <>
       <EventsList events={eventslist} />

@@ -1,11 +1,18 @@
 import EventsCard from "./EventsCard";
-import type { EventListItem } from "../../types";
+import type { EventListItem, UserEventsListItem } from "../../types";
+import useUser from "../../hooks/useUser";
+import useUserEventsList from "../../hooks/useUserEventsList";
 
 interface EventsListProps {
   events: EventListItem[];
 }
 
 export default function EventsList({ events }: EventsListProps) {
+  const { userEventsList, rsvpToEvent } = useUserEventsList();
+  const { userState } = useUser();
+
+  const isLoggedIn = userState.status === "success";
+
   return (
     <ul>
       {events.length > 0 ? (
@@ -17,6 +24,12 @@ export default function EventsList({ events }: EventsListProps) {
             description={event.description}
             starts_at={event.starts_at}
             ends_at={event.ends_at}
+            isAttending={userEventsList.some(
+              (userEvent: UserEventsListItem) =>
+                event.id === Number(userEvent.id),
+            )}
+            isLoggedIn={isLoggedIn}
+            onRsvp={() => rsvpToEvent(event.id)}
           />
         ))
       ) : (
