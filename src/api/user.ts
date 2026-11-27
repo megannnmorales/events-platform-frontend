@@ -11,9 +11,6 @@ export const cancelRsvp = (id: number): Promise<void> => {
   return apiDelete(`/api/events/${id}/rsvp/me`);
 };
 
-export const addRsvp = (
-  id: number,
-  signal?: AbortSignal,
-): Promise<RsvpResponse> => {
-  return apiPost<RsvpResponse>(`/api/events/${id}/rsvp`, signal);
+export const addRsvp = (id: number): Promise<RsvpResponse> => {
+  return apiPost<RsvpResponse>(`/api/events/${id}/rsvp`);
 };

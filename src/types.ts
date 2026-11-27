@@ -22,6 +22,10 @@ export interface Events {
   events: EventListItem[];
 }
 
+export interface CreateEventResponse {
+  event: EventListItem;
+}
+
 export interface UserEventsListItem {
   id: number;
   title: string;
@@ -45,36 +49,14 @@ export interface RsvpResponseItem {
   event_id: number;
   created_at: string;
 }
+export interface SingleEventResponse {
+  event: SingleEvent;
+}
 
-// address: "Discovery Way, Leeds, LS2 3AA";
-// capacity: 200;
-// created_at: "2026-11-23T15:26:04.151745+00:00";
-// description: "Monthly meetup for Leeds-based developers. Lightning talks and networking.";
-// ends_at: "2026-06-18T21:00:00+01:00";
-// id: 1;
-// starts_at: "2026-06-18T18:30:00+01:00";
-// title: "Leeds Tech Meetup – June Edition";
-
-// 0
-// :
-// description
-// :
-// "Monthly meetup for Leeds-based developers. Lightning talks and networking."
-// ends_at
-// :
-// "2026-06-18T21:00:00+01:00"
-// id
-// :
-// 1
-// organiser_id
-// :
-// 1
-// starts_at
-// :
-// "2026-06-18T18:30:00+01:00"
-// title
-// :
-// "Leeds Tech Meetup – June Edition"
-// venue_id
-// :
-// 1
+export interface CreateEventInput {
+  title: string;
+  description: string;
+  starts_at: string;
+  ends_at: string;
+  venue_id: number;
+}

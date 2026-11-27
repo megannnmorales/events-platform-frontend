@@ -42,7 +42,7 @@ export default function EventsCard({
           Log in to RSVP
         </button>
       ) : isAttending ? (
-        <span>I am attending</span>
+        <span className="attending">I am attending</span>
       ) : (
         <button
           onClick={(e) => {

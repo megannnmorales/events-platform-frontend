@@ -191,3 +191,8 @@ button:hover {
 .card * {
   cursor: pointer;
 }
+
+.attending {
+  font-weight: bold;
+  color: var(--accent);
+}
